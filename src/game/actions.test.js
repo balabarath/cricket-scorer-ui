@@ -4,8 +4,25 @@ import { fetchGameDetails, GAME_DETAILS_FETCHED } from './actions';
 const mock = mockAxios();
 let store;
 const apiData = {
-  team1: 'Team 1',
-  team2: 'Team 2',
+  totalOvers:20,
+  teams: [{name: 'team1', Players:[{
+    id:'1122',
+    name:'Sarang'
+  }],
+    isPlaying:false,
+    score: 210,
+    wickets:5,
+    overs:20
+  },
+  {name: 'team2', Players:[{
+    id:'1122',
+    name:'Siddartha'
+  }],
+    isPlaying:true,
+    score: 115,
+    wickets:5,
+    overs:10.4
+  }]
 };
 
 
