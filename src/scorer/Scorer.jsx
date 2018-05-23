@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Col, Row, Button, ButtonGroup } from 'reactstrap';
+import { Container, Col, Row, ButtonGroup } from 'reactstrap';
 import './scorer.css';
 
 const Scorer = () => (
@@ -42,7 +42,7 @@ const Scorer = () => (
          <Row>
             <Col  className="secondline" lg={{ size: 6, offset: 3 }} md={{ size: 6, offset: 3 }} sm="12" xs="12">
                 <ButtonGroup style={{width:"100%"}}>
-                    <button type="button" className="btn btn-outline-primary" > 6 </button>
+                    <button type="button" className="btn btn-outline-primary"> 6 </button>
                     <button type="button" className="btn btn-outline-primary"> 7 </button>
                 </ButtonGroup>
             </Col>

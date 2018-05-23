@@ -22,7 +22,9 @@ const apiData = {
     score: 115,
     wickets:5,
     overs:10.4
-  }]
+  }],
+  currentBatsmen:[{player:{name:'Bala',Id:'123456'},onStrike:false}
+                 ,{player:{name:'Siddartha',Id:'123456'},onStrike:true}]
 };
 
 
