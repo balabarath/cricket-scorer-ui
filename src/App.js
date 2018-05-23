@@ -6,7 +6,7 @@ import ScoreBoard from './game/scoreboard';
 import SwipeableView from 'react-swipeable-views';
 import Scorer from './scorer/scorer';
 import ScoreDetails from './scoredetails/ScoreDetails';
-
+import Scorer from './scorer/scorer';
 class App extends Component 
 {
  componentDidMount()
@@ -20,7 +20,6 @@ class App extends Component
       <div>
         <ScoreBoard playingTeam = {this.props.game.teams.filter(team=> team.isPlaying)[0]}
                     OpponentTeam = {this.props.game.teams.filter(team=> !team.isPlaying)[0]}/>
-
             <div>
                 <SwipeableView enableMouseEvents>
                       <Scorer/>

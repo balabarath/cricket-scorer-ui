@@ -1,0 +1,18 @@
+.scores .btn
+{
+    margin: 5pt !important;
+    border-radius: 2px !important;
+    width: 100%;
+}
+
+ .secondline .btn
+{
+    margin: 5pt !important;
+    border-radius: 2px !important;
+    width: 12.5%;
+}
+
+.next-ball
+{
+    width:100% !important;
+}
