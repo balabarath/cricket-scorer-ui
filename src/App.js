@@ -1,7 +1,10 @@
+
 import React,{Component}  from 'react';
 import { connect } from 'react-redux';
 import {fetchGameDetails} from './game/actions';
 import ScoreBoard from './game/scoreboard';
+import SwipeableView from 'react-swipeable-views';
+
 
 class App extends Component 
 {
@@ -16,7 +19,23 @@ class App extends Component
       <div>
         <ScoreBoard playingTeam = {this.props.game.teams.filter(team=> team.isPlaying)[0]}
                     OpponentTeam = {this.props.game.teams.filter(team=> !team.isPlaying)[0]}/>
+
+            <div>
+                <SwipeableView enableMouseEvents>
+
+                    <div>
+                      Sarang
+                      </div>
+
+                      <div>
+                        Charu
+                        </div>
+
+                  </SwipeableView>
+            </div>
       </div>
+   
+     
   );
   else 
   return (<div></div>); }
