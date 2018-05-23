@@ -1,7 +1,6 @@
 import { GAME_DETAILS_FETCHED } from "./actions";
 
 const reducer = (state = {}, action) => {
-  console.log(state);
   switch(action.type)
   {
     case GAME_DETAILS_FETCHED: 
