@@ -5,7 +5,7 @@ import {fetchGameDetails} from './game/actions';
 import ScoreBoard from './game/Scoreboard';
 import SwipeableView from 'react-swipeable-views';
 import ScoreDetails from './scoredetails/ScoreDetails';
-import Scorer from './scorer/scorer';
+import Scorer from './scorer/Scorer';
 class App extends Component 
 {
  componentDidMount()
