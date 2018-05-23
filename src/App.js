@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import {fetchGameDetails} from './game/actions';
 import ScoreBoard from './game/scoreboard';
 import SwipeableView from 'react-swipeable-views';
-
+import Scorer from './scorer/scorer';
+import ScoreDetails from './scoredetails/ScoreDetails';
 
 class App extends Component 
 {
@@ -22,20 +23,12 @@ class App extends Component
 
             <div>
                 <SwipeableView enableMouseEvents>
-
-                    <div>
-                      Sarang
-                      </div>
-
-                      <div>
-                        Charu
-                        </div>
-
-                  </SwipeableView>
+                      <Scorer/>
+                      <ScoreDetails/>
+                </SwipeableView>
             </div>
       </div>
    
-     
   );
   else 
   return (<div></div>); }
