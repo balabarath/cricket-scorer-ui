@@ -24,6 +24,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "test_with_coverage": "CI=true react-scripts test --env=jsdom --coverage"
+    "test_with_coverage": "CI=true react-scripts test --env=jsdom --coverage",
+    "prepush": "CI=true react-scripts test --env=jsdom"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3"
   }
 }
