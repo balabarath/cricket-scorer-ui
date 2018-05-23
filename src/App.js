@@ -2,9 +2,8 @@
 import React,{Component}  from 'react';
 import { connect } from 'react-redux';
 import {fetchGameDetails} from './game/actions';
-import ScoreBoard from './game/scoreboard';
+import ScoreBoard from './game/Scoreboard';
 import SwipeableView from 'react-swipeable-views';
-import Scorer from './scorer/scorer';
 import ScoreDetails from './scoredetails/ScoreDetails';
 import Scorer from './scorer/scorer';
 class App extends Component 
