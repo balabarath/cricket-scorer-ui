@@ -10,7 +10,7 @@ Resources:
   UIS3Bucket:
     Type: "AWS::S3::Bucket"
     Properties:
-      BucketName: !Join [ "-", [ "-ui", Ref: tagName ] ]
+      BucketName: !Join [ "-", [ "cricket-scorer-ui", Ref: tagName ] ]
       WebsiteConfiguration:
         IndexDocument: index.html
   UIS3BucketPolicy:
