@@ -1,9 +1,9 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
 import { Table } from 'reactstrap';
 
 
-const BattingTable = () =>
+const BattingTable = (props) =>
+
     <div>
         <br />
         <b>Batting Table</b>
@@ -19,12 +19,18 @@ const BattingTable = () =>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                   
-                </tr>
-                <tr>
-                  
-                </tr>
+                
+                {props.battingDetails.map((battingDetail,index) => (
+                <tr key={index}>
+                    <td> {battingDetail.name}</td>
+                    <td> {battingDetail.runs}</td>
+                    <td> {battingDetail.balls}</td>
+                    <td> {battingDetail.fours}</td>
+                    <td> {battingDetail.sixes}</td>
+                    <td> {battingDetail.strikeRate}</td>
+                </tr>    
+                ))}
+        
 
             </tbody>
         </Table>

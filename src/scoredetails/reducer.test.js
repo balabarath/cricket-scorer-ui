@@ -25,13 +25,13 @@ describe('reducer',()=>{
    
     it('should return empty intital battingDetails',()=>{
        
-        expect(reducer({},{type:GET_BATTING_DETAILS,payload:{battingDetails:[]}})).toEqual({battingDetails:[]});
+        expect(reducer({},{type:GET_BATTING_DETAILS,payload:{battingDetails:[]}})).toEqual([]);
     });
 
 
     it('should return empty  battingDetails',()=>{
        
-        expect(reducer({},{type:GET_BATTING_DETAILS,payload:{battingDetails:battingDetails}})).toEqual({battingDetails:battingDetails});
+        expect(reducer({},{type:GET_BATTING_DETAILS,payload:{battingDetails:battingDetails}})).toEqual(battingDetails);
     });
     
     

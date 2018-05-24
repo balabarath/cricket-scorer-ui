@@ -6,6 +6,7 @@ import ScoreBoard from './game/Scoreboard';
 import SwipeableView from 'react-swipeable-views';
 import ScoreDetails from './scoredetails/ScoreDetails';
 import Scorer from './scorer/Scorer';
+import { getBattingDetails } from './scoredetails/actions';
 class App extends Component {
   componentDidMount() {
     this.props.getData();
@@ -17,9 +18,10 @@ class App extends Component {
           <ScoreBoard playingTeam={this.props.game.teams.filter(team => team.isPlaying)[0]}
             OpponentTeam={this.props.game.teams.filter(team => !team.isPlaying)[0]} />
           <div>
-            <SwipeableView enableMouseEvents >
+            <SwipeableView enableMouseEvents onChangeIndex={this.props.getBattingData}>
               <Scorer />
-              <ScoreDetails />
+            
+              <ScoreDetails battingDetails={ this.props.battingDetails} />
             </SwipeableView>
           </div>
         </div>
@@ -30,13 +32,14 @@ class App extends Component {
   }
 };
 
-const mapsState = (state) => {
+const mapsState = (state) => ({ 
+  game: state.game,
+  battingDetails: state.battingDetails 
+});
 
-  return { game: state.game };
-}
 const mapDispatch = (dispatch) => {
   return { getData: () => dispatch(fetchGameDetails()), 
-           getBattingData: () => dispatch()
+           getBattingData: (index) =>  dispatch(getBattingDetails('16a2e158-5bdb-11e8-9c2d-fa7ae01bbeba',index))
   };
 }
 export default connect(mapsState, mapDispatch)(App);

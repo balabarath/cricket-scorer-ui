@@ -1,9 +1,9 @@
 import { GET_BATTING_DETAILS } from "./actions";
 
-const reducer = (state={} , action) => {
+const reducer = (state=[] , action) => {
   switch(action.type)
   {
-    case GET_BATTING_DETAILS: return {...state,battingDetails:action.payload.battingDetails};
+    case GET_BATTING_DETAILS: return action.payload.battingDetails;
     default: return state;
   }
   
