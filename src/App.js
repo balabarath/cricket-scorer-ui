@@ -17,7 +17,7 @@ class App extends Component {
           <ScoreBoard playingTeam={this.props.game.teams.filter(team => team.isPlaying)[0]}
             OpponentTeam={this.props.game.teams.filter(team => !team.isPlaying)[0]} />
           <div>
-            <SwipeableView enableMouseEvents>
+            <SwipeableView enableMouseEvents >
               <Scorer />
               <ScoreDetails />
             </SwipeableView>
@@ -35,6 +35,8 @@ const mapsState = (state) => {
   return { game: state.game };
 }
 const mapDispatch = (dispatch) => {
-  return { getData: () => dispatch(fetchGameDetails()) };
+  return { getData: () => dispatch(fetchGameDetails()), 
+           getBattingData: () => dispatch()
+  };
 }
 export default connect(mapsState, mapDispatch)(App);
