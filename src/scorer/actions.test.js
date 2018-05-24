@@ -1,5 +1,5 @@
 import { createMockStore, mockAxios } from "../testHelpers/mockHelpers";
-import { switchOnStrikeBatsman, SWITCH_ONSTRIKE_BATSMAN } from './actions';
+import { switchOnStrikeBatsman, updateThisBall, SWITCH_ONSTRIKE_BATSMAN, BALL_SCORE_CAPTURED } from './actions';
 
 const mock = mockAxios();
 let store;
@@ -29,9 +29,11 @@ const apiData = {
     , { player: { name: 'Siddartha', Id: '123456' }, onStrike: true }]
 };
 
+const thisBallData = {score:0};
+
 describe("scorer/actions", () => {
   beforeEach(() => {
-    store = createMockStore({ game: apiData })
+    store = createMockStore({ game: apiData,  thisBall: thisBallData})
   });
 
   it('should update batsman onstrike when switching player', () => {
@@ -45,4 +47,18 @@ describe("scorer/actions", () => {
       });
     });
   });
+
+  it('should update current ball value', () => {
+    store.dispatch(updateThisBall(6)).then(() => {
+      expect(store.getActions()[0]).toEqual({
+        type: BALL_SCORE_CAPTURED,
+        payload: {
+            score:6
+        }
+      }
+      );
+    });
+  });
+
+
 })
