@@ -19,11 +19,11 @@ describe("reducer", () => {
 
   it('should change onstrike batsman state', () => {
     expect(reducer({
-      currentBatsmen: [{ player: { name: 'Bala', Id: '123456' }, onStrike: false }
-        , { player: { name: 'Siddartha', Id: '123456' }, onStrike: true }]
-    }, { type: SWITCH_ONSTRIKE_BATSMAN })).toEqual({
-      currentBatsmen: [{ player: { name: 'Bala', Id: '123456' }, onStrike: true }
-        , { player: { name: 'Siddartha', Id: '123456' }, onStrike: false }]
+      currentBatsmen: [{ name: 'Bala', id: '1', onStrike: false }
+        , { name: 'Siddartha', id: '2' , onStrike: true }]
+    }, { type: SWITCH_ONSTRIKE_BATSMAN,payload:{batsmanId:'1'} })).toEqual({
+      currentBatsmen: [{ name: 'Bala', id: '1' , onStrike: true }
+        , { name: 'Siddartha', id: '2' ,onStrike: false }]
     })
   });
 

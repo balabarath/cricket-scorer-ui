@@ -8,7 +8,13 @@ const reducer = (state = {}, action) => {
     return action.payload.gameDetails;
     case SWITCH_ONSTRIKE_BATSMAN:
     return {...state,currentBatsmen:state.currentBatsmen.map((bm)=>{
-      bm.onStrike = !bm.onStrike;
+    console.log(state.currentBatsmen);
+     if(action.payload.batsmanId===bm.id){
+        bm.onStrike = true;
+      }
+      else {
+        bm.onStrike = false;
+      }
       return bm;
     })}
     case SCORE_UPDATED:

@@ -43,9 +43,10 @@ describe("scorer/actions", () => {
   });
 
   it('should update batsman onstrike when switching player', () => {
-    store.dispatch(switchOnStrikeBatsman()).then(() => {
+    store.dispatch(switchOnStrikeBatsman(1)).then(() => {
       expect(store.getActions()[0]).toEqual({
-        type: SWITCH_ONSTRIKE_BATSMAN
+        type: SWITCH_ONSTRIKE_BATSMAN,
+        payload:{batsmanId:1}
       });
     });
   });

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Col, Row, ButtonGroup } from 'reactstrap';
 import './scorer.css';
+import CurrentBatsmen from './CurrentBatsmen';
 
 const Scorer = () => (
 
@@ -13,18 +14,7 @@ const Scorer = () => (
         </Col>
         </Row>
         <br/>
-        <Row>
-            <Col lg={{ size: 6, offset: 3 }} md={{ size: 6, offset: 3 }} sm="12" xs="12">
-                <ButtonGroup style={{width:"100%"}}>
-                <button type="button" className="btn btn-info" style={{width:"50%"}} >
-                       Sachin
-                    </button>
-                    <button type="button" className="btn btn-outline-info" style={{width:"50%"}} >
-                       Sehwag
-                    </button>
-                </ButtonGroup>
-            </Col>
-        </Row>
+        <CurrentBatsmen/>
         <br/>
         <Row>
             <Col  className="scores" lg={{ size: 6, offset: 3 }} md={{ size: 6, offset: 3 }} sm="12" xs="12">
