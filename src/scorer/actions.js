@@ -6,45 +6,47 @@ export const RUNS_BUTTON_CLICKED = 'RUNS_BUTTON_CLICKED';
 export const SCORE_UPDATED = 'SCORE_UPDATED';
 export const SCORE_UPDATE_FAILED = 'SCORE_UPDATE_FAILED';
 
+
 export const switchOnStrikeBatsman = () => async (dispatch, getState) => {
     let batsMen = getState().game.currentBatsmen;
     dispatch(
         {
-            type: SWITCH_ONSTRIKE_BATSMAN,
-            payload: {
-                currentBatsmen: batsMen.map((bm) => {
-                    bm.onStrike = !bm.onStrike;
-                    return bm;
-                })
-            }
+            type: SWITCH_ONSTRIKE_BATSMAN
         }
     );
 }
 
-export const updateThisBall = (scoreTobeUpdated) => async (dispatch) => {
-
-    dispatch({
+const createRunUpdatedAction = (score) => (
+    {
         type: RUNS_BUTTON_CLICKED,
         payload: {
-            score: scoreTobeUpdated
+            score: score
         }
     });
+export const updateThisBall = (scoreTobeUpdated) => async (dispatch) => {
+
+    dispatch(createRunUpdatedAction(scoreTobeUpdated));
 }
 
+const createScoreUpdatedAction = (score) => ({
+    
+    type: SCORE_UPDATED,
+    payload: {
+        score: score.score
+    }
+});
+
+
+
 export const updateScore = (gameid, scoreTobeUpdated) => async (dispatch) => {
-    const response = await axios.post(`${config.apiUrl}/game/${gameid}`, scoreTobeUpdated)
-        .then((response) => {
-            if (response.status === 200)
-                dispatch({
-                    type: SCORE_UPDATED,
-                    payload: {
-                        score: scoreTobeUpdated.score, over: scoreTobeUpdated.over
-                    }
-                })
-        })
-        .catch((error) => {
-            dispatch({
-                type: SCORE_UPDATE_FAILED
-            });
+    try {
+        const response = await axios.post(`${config.apiUrl}/game/${gameid}`, scoreTobeUpdated);
+        if (response.status === 200) {
+            dispatch(createScoreUpdatedAction(scoreTobeUpdated))
+        }
+    } catch (error) {
+        dispatch({
+            type: SCORE_UPDATE_FAILED
         });
+    }
 }

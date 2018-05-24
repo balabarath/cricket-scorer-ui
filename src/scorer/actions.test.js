@@ -45,11 +45,7 @@ describe("scorer/actions", () => {
   it('should update batsman onstrike when switching player', () => {
     store.dispatch(switchOnStrikeBatsman()).then(() => {
       expect(store.getActions()[0]).toEqual({
-        type: SWITCH_ONSTRIKE_BATSMAN,
-        payload: {
-          currentBatsmen: [{ player: { name: 'Bala', Id: '123456' }, onStrike: true }
-            , { player: { name: 'Siddartha', Id: '123456' }, onStrike: false }]
-        }
+        type: SWITCH_ONSTRIKE_BATSMAN
       });
     });
   });
@@ -67,12 +63,12 @@ describe("scorer/actions", () => {
   });
   it('should send score details to api and update score state', () => {
     mock
-      .onPost('http://localhost:9090/game/1', { over: 10, score: 6, currentBatsman: 10, currentBowler: 12 })
+      .onPost('http://localhost:9090/game/1', { over: 10, score: 6, currentBatsman: '10', currentBowler: '12'})
       .reply(200)
-    store.dispatch(updateScore(1, { over: 10, score: 6, currentBatsman: 10, currentBowler: 12 })).then(() => {
+    store.dispatch(updateScore(1, { over: 10, score: 6, currentBatsman: '10', currentBowler: '12' })).then(() => {
       expect(store.getActions()[0]).toEqual({
         type: SCORE_UPDATED,
-        payload: { over: 10, score: 6 }
+        payload: { score: 6 }
       })
     });
 

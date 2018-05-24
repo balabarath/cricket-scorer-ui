@@ -8,5 +8,6 @@ export const fetchGameDetails = () => async (dispatch) => {
   dispatch({
     type: GAME_DETAILS_FETCHED,
     payload: {
-     gameDetails: response.data}});
+     gameDetails: response.data 
+    }});
 };
