@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table } from 'reactstrap';
+import './scoredetails.css';
 
 
 const BattingTable = (props) =>
@@ -21,8 +22,12 @@ const BattingTable = (props) =>
             <tbody>
                 
                 {props.battingDetails.map((battingDetail,index) => (
+              
                 <tr key={index}>
-                    <td> {battingDetail.name}</td>
+                    {(props.currentBatsmen[0].id === battingDetail.batsmanId || props.currentBatsmen[1].id ===battingDetail.batsmanId ) ? 
+                        <td> <b>{battingDetail.name}</b>*</td> : 
+                        <td> {battingDetail.name}</td>
+                    } 
                     <td> {battingDetail.runs}</td>
                     <td> {battingDetail.balls}</td>
                     <td> {battingDetail.fours}</td>

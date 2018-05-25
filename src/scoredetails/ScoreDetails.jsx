@@ -7,7 +7,7 @@ const ScoreDetails = (props) => (
     <Container>
         <Row>
             <Col lg={{size:6,offset:3}} md= {{size:6,offset:3}} >
-                <BattingTable battingDetails={props.battingDetails} />
+                <BattingTable battingDetails={props.battingDetails} currentBatsmen ={props.currentBatsmen}/>
             </Col>
         </Row>
     </Container>

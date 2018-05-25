@@ -21,7 +21,7 @@ class App extends Component {
             <SwipeableView enableMouseEvents onChangeIndex={this.props.getBattingData}>
               <Scorer />
             
-              <ScoreDetails battingDetails={ this.props.battingDetails} />
+              <ScoreDetails battingDetails={ this.props.battingDetails}  currentBatsmen ={this.props.game.currentBatsmen}/>
             </SwipeableView>
           </div>
         </div>
