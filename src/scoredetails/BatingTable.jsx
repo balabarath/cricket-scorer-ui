@@ -7,7 +7,7 @@ const BattingTable = (props) =>
 
     <div>
         <br />
-        <b>Batting Table</b>
+        <font className='boldStyle'>Batting Table</font>
         <Table size="sm" responsive>
             <thead bgcolor='#D3D3D3'>
                 <tr>
@@ -25,8 +25,8 @@ const BattingTable = (props) =>
               
                 <tr key={index}>
                     {(props.currentBatsmen[0].id === battingDetail.batsmanId || props.currentBatsmen[1].id ===battingDetail.batsmanId ) ? 
-                        <td> <b>{battingDetail.name}</b>*</td> : 
-                        <td> {battingDetail.name}</td>
+                        <td className='boldStyle'>{battingDetail.name}*</td> : 
+                        <td > {battingDetail.name}</td>
                     } 
                     <td> {battingDetail.runs}</td>
                     <td> {battingDetail.balls}</td>
