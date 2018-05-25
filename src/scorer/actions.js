@@ -11,7 +11,7 @@ export const switchOnStrikeBatsman = (id) => async (dispatch, getState) => {
     dispatch(
         {
             type: SWITCH_ONSTRIKE_BATSMAN,
-            payload: {batsmanId:id}
+            payload: { batsmanId: id }
         }
     );
 }
@@ -29,7 +29,7 @@ export const updateThisBall = (scoreTobeUpdated) => async (dispatch) => {
 }
 
 const createScoreUpdatedAction = (score) => ({
-    
+
     type: SCORE_UPDATED,
     payload: {
         score: score.score
@@ -38,15 +38,26 @@ const createScoreUpdatedAction = (score) => ({
 
 
 
-export const updateScore = (gameid, scoreTobeUpdated) => async (dispatch) => {
+export const updateScore = () => async (dispatch, getState) => {
     try {
+        let state = getState();
+        let playingTeam = state.game.teams.filter(team => team.isPlaying)[0];
+        let scoreTobeUpdated = {
+            over: playingTeam.overs, score: state.thisBall.score,
+            currentBatsmen: state.game.currentBatsmen
+        };
+        let gameid = state.game.gameId;
+        
         const response = await axios.post(`${config.apiUrl}/game/${gameid}`, scoreTobeUpdated);
         if (response.status === 200) {
             dispatch(createScoreUpdatedAction(scoreTobeUpdated))
         }
     } catch (error) {
+        console.log(error);
         dispatch({
             type: SCORE_UPDATE_FAILED
-        });
+        }
+
+        );
     }
 }

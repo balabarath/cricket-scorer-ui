@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Col, Row } from 'reactstrap';
 import { connect } from 'react-redux';
-import { switchOnStrikeBatsman,updateThisBall } from './actions';
+import { switchOnStrikeBatsman,updateThisBall, updateScore } from './actions';
 
 import CurrentBatsmen from './CurrentBatsmen';
 import RunsPerBall from './RunsPerBall';
@@ -25,7 +25,7 @@ const Scorer = (props) => (
         <br/>
         <Row>
             <Col  lg={{ size: 6, offset: 3 }} md={{ size: 6, offset: 3 }} sm="12" xs="12">
-                <button type="button" className="btn btn-outline-success next-ball" > Next Ball </button>
+                <button type="button" className="btn btn-outline-success next-ball" onClick ={props.nextBallClick}> Next Ball </button>
             </Col>
         </Row>
         
@@ -43,6 +43,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
     return { updateThisBall: (evt) => { dispatch(updateThisBall(parseInt(evt.target.id, 10))) },
              setBatsManOnStrike: (evt) => dispatch(switchOnStrikeBatsman(evt.target.id)),
+             nextBallClick: ()=> dispatch(updateScore())
             }};
  
 

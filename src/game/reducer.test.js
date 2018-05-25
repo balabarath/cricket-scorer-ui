@@ -50,7 +50,5 @@ describe("reducer", () => {
               {name:'team2',players:[], score:0, overs:0, isPlaying:false, wickets:0}],
             currentBatsmen:[] 
             });
-
-    
   })
 });

@@ -9,6 +9,7 @@ import {
 
 const mock = mockAxios();
 let store;
+
 const apiData = {
   totalOvers: 20,
   teams: [{
@@ -29,13 +30,16 @@ const apiData = {
     isPlaying: true,
     score: 115,
     wickets: 5,
-    overs: 10.4
+    overs: 10
   }],
-  currentBatsmen: [{ name: 'Bala', Id: '123456' , onStrike: false }
-    , { name: 'Siddartha', Id: '123456' , onStrike: true }]
+  currentBatsmen: [{ name: 'Bala', Id: '10' , onStrike: false }
+    , { name: 'Siddartha', Id: '10' , onStrike: true }],
+  gameId: '1'
 };
 
-const thisBallData = { score: 0 };
+const thisBallData = { score: 6 };
+
+
 
 describe("scorer/actions", () => {
   beforeEach(() => {
@@ -64,11 +68,10 @@ describe("scorer/actions", () => {
   });
   it('should send score details to api and update score state', () => {
     mock
-      .onPost('http://localhost:9090/game/1', { over: 10, score: 6, currentBatsman: [{ name: 'Bala', Id: '123456' , onStrike: false }
-      , { name: 'Siddartha', Id: '123456' , onStrike: true }], currentBowler: '12'})
+      .onPost('http://localhost:9090/game/1', { over: 10, score: 6, currentBatsmen: [{ name: 'Bala', Id: '10' , onStrike: false }
+      , { name: 'Siddartha', Id: '10' , onStrike: true }]})
       .reply(200)
-    store.dispatch(updateScore(1, { over: 10, score: 6, currentBatsman: [{ name: 'Bala', Id: '123456' , onStrike: false }
-    , { name: 'Siddartha', Id: '123456' , onStrike: true }], currentBowler: '12' })).then(() => {
+    store.dispatch(updateScore()).then(() => {
       expect(store.getActions()[0]).toEqual({
         type: SCORE_UPDATED,
         payload: { score: 6 }
@@ -78,9 +81,10 @@ describe("scorer/actions", () => {
   });
   it('should dispatch score update failed when api returns non 200', () => {
     mock
-      .onPost('http://localhost:9090/game/2', { over: 10, score: 6, currentBatsman: 10, currentBowler: 12 })
+      .onPost('http://localhost:9090/game/1', { over: 10, score: 6,  currentBatsmen: [{ name: 'Bala', Id: '10' , onStrike: false }
+      , { name: 'Siddartha', Id: '10' , onStrike: true }] })
       .reply(500)
-    store.dispatch(updateScore(2, { over: 10, score: 6, currentBatsman: 10, currentBowler: 12 })).then(() => {
+    store.dispatch(updateScore()).then(() => {
       expect(store.getActions()[0]).toEqual({
         type: SCORE_UPDATE_FAILED
       })
