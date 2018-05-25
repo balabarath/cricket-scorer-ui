@@ -1,7 +1,6 @@
 import React from 'react';
 import { Col, Row, ButtonGroup } from 'reactstrap';
-import { connect } from 'react-redux';
-import { switchOnStrikeBatsman } from './actions';
+
 
 const CurrentBatsmen = (props) => (
 
@@ -26,12 +25,5 @@ const CurrentBatsmen = (props) => (
     </Col>
   </Row>
 );
-const mapState = (state) => {
-  return { batsmen: state.game.currentBatsmen };
-}
 
-const mapDispatch= (dispatch) => {
-  return { setBatsManOnStrike: (evt) => dispatch(switchOnStrikeBatsman(evt.target.id)) };
-}
-
-export default connect(mapState,mapDispatch)(CurrentBatsmen);
+export default CurrentBatsmen;

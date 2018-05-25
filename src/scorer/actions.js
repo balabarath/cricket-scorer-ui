@@ -8,7 +8,6 @@ export const SCORE_UPDATE_FAILED = 'SCORE_UPDATE_FAILED';
 
 
 export const switchOnStrikeBatsman = (id) => async (dispatch, getState) => {
-    let batsMen = getState().game.currentBatsmen;
     dispatch(
         {
             type: SWITCH_ONSTRIKE_BATSMAN,

@@ -1,7 +1,5 @@
 import React from 'react';
 import { Col, Row, ButtonGroup } from 'reactstrap';
-import { connect } from 'react-redux';
-import { updateThisBall } from './actions';
 
 const RunsPerBall = (props) => (
   <div>
@@ -29,11 +27,4 @@ const RunsPerBall = (props) => (
   </div>
 );
 
-const mapState = (state) => {
-  return state.thisBall;
-};
-
-const mapDispatch = (dispatch) => {
-  return { updateThisBall: (evt) => { dispatch(updateThisBall(parseInt(evt.target.id))) } }};
-
-export default connect(mapState,mapDispatch)(RunsPerBall);
+export default RunsPerBall;

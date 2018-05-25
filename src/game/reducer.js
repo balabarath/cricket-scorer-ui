@@ -22,7 +22,7 @@ const reducer = (state = {}, action) => {
       if(team.isPlaying)
       {
         team.score += action.payload.score;
-         let newOverParams = team.overs.toString().split('.').map(ele=> parseInt(ele));
+         let newOverParams = team.overs.toString().split('.').map(ele=> parseInt(ele, 10));
          let balls = ((newOverParams[0]*6)+(newOverParams[1]||0)+1);
          team.overs = parseFloat(Math.floor(balls/6).toString()+'.'+ (balls%6).toString());
       }
