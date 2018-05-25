@@ -15,7 +15,7 @@ const Scorer = (props) => (
         <br/>
         <Row>
         <Col lg={{ size: 6, offset: 3 }} md={{ size: 6, offset: 3 }} sm="12" xs="12">
-        <h7> This ball </h7>
+        <font size='4'> This ball </font>
         </Col>
         </Row>
         <br/>

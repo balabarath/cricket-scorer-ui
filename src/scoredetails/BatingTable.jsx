@@ -8,6 +8,9 @@ const BattingTable = (props) =>
     <div>
         <br />
         <font className='boldStyle'>Batting Table</font>
+        
+        <br/>
+        <br/>
         <Table size="sm" responsive>
             <thead bgcolor='#D3D3D3'>
                 <tr>
