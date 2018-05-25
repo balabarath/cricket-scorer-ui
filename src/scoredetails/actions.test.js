@@ -62,7 +62,7 @@ const gameData = {
         .onGet('http://localhost:9090/game/16a2e158-5bdb-11e8-9c2d-fa7ae01bbeba/scoredetails')
         .reply(200, battingDetails);
   
-      store.dispatch(getBattingDetails('16a2e158-5bdb-11e8-9c2d-fa7ae01bbeba')).then(() => {
+      store.dispatch(getBattingDetails('16a2e158-5bdb-11e8-9c2d-fa7ae01bbeba',1)).then(() => {
         expect(store.getActions()[0]).toEqual({
           type: GET_BATTING_DETAILS,
           payload: {
