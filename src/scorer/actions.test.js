@@ -31,8 +31,8 @@ const apiData = {
     wickets: 5,
     overs: 10.4
   }],
-  currentBatsmen: [{ player: { name: 'Bala', Id: '123456' }, onStrike: false }
-    , { player: { name: 'Siddartha', Id: '123456' }, onStrike: true }]
+  currentBatsmen: [{ name: 'Bala', Id: '123456' , onStrike: false }
+    , { name: 'Siddartha', Id: '123456' , onStrike: true }]
 };
 
 const thisBallData = { score: 0 };
@@ -64,9 +64,11 @@ describe("scorer/actions", () => {
   });
   it('should send score details to api and update score state', () => {
     mock
-      .onPost('http://localhost:9090/game/1', { over: 10, score: 6, currentBatsman: '10', currentBowler: '12'})
+      .onPost('http://localhost:9090/game/1', { over: 10, score: 6, currentBatsman: [{ name: 'Bala', Id: '123456' , onStrike: false }
+      , { name: 'Siddartha', Id: '123456' , onStrike: true }], currentBowler: '12'})
       .reply(200)
-    store.dispatch(updateScore(1, { over: 10, score: 6, currentBatsman: '10', currentBowler: '12' })).then(() => {
+    store.dispatch(updateScore(1, { over: 10, score: 6, currentBatsman: [{ name: 'Bala', Id: '123456' , onStrike: false }
+    , { name: 'Siddartha', Id: '123456' , onStrike: true }], currentBowler: '12' })).then(() => {
       expect(store.getActions()[0]).toEqual({
         type: SCORE_UPDATED,
         payload: { score: 6 }
